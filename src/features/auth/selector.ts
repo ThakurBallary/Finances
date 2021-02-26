@@ -1,7 +1,7 @@
 import { AppState } from 'store/redux';
 
-const token = (state: AppState) => state.auth.token;
+const pin = (state: AppState) => state.auth.pin;
 
 export default {
-  token,
+  pin,
 };

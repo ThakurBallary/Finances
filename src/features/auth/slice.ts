@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type AuthState = {
-  token: string;
+  pin: string;
 };
 
 export const initialState: AuthState = {
-  token: '',
+  pin: '',
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setToken(state, action: PayloadAction<string>) {
-      state.token = action.payload;
+    setPin(state, action: PayloadAction<string>) {
+      state.pin = action.payload;
     },
   },
 });
 
-export const { setToken } = authSlice.actions;
+export const { setPin } = authSlice.actions;
 export const auth = authSlice.reducer;

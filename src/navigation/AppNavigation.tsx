@@ -1,11 +1,13 @@
 import React from 'react';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
-import { AuthStackNavigator, DrawerNavigator } from 'navigation';
-import { useAppSelector } from 'hooks';
-import { authSelector } from 'features/auth';
+import { DrawerNavigator } from 'navigation';
 
 const Stack = createStackNavigator();
 
@@ -16,17 +18,11 @@ export default function AppNavigation() {
     theme = DarkTheme;
   }
 
-  const token = useAppSelector(authSelector.token);
-
   return (
     <AppearanceProvider>
       <NavigationContainer theme={theme}>
         <Stack.Navigator headerMode="none">
-          {token ? (
-            <Stack.Screen name="Main" component={DrawerNavigator} />
-          ) : (
-              <Stack.Screen name="Auth" component={AuthStackNavigator} />
-            )}
+          <Stack.Screen name="Main" component={DrawerNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppearanceProvider>

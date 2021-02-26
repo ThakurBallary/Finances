@@ -1,14 +1,14 @@
 import React from 'react';
-import { useTheme } from '@react-navigation/native';
 import { View, Text } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 import { styles } from 'themes';
 
-export default function SignUp() {
+export default function Accounts() {
   const { colors } = useTheme();
   return (
     <View style={styles.flexCenter}>
-      <Text style={{ color: colors.text }}>SignUp Screen</Text>
+      <Text style={{ color: colors.text }}>Accounts Screen</Text>
     </View>
   );
 }

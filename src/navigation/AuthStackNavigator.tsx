@@ -1,11 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { SignInScreen, SignUpScreen } from 'screens';
+import { PinScreen } from 'screens';
 
 export type AuthStackParamList = {
-  SignIn: undefined;
-  SignUp: undefined;
+  Pin: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthStackParamList>();
@@ -13,8 +12,7 @@ const AuthStack = createStackNavigator<AuthStackParamList>();
 export default function AuthStackNavigator() {
   return (
     <AuthStack.Navigator>
-      <AuthStack.Screen name="SignIn" component={SignInScreen} />
-      <AuthStack.Screen name="SignUp" component={SignUpScreen} />
+      <AuthStack.Screen name="Pin" component={PinScreen} />
     </AuthStack.Navigator>
   );
 }

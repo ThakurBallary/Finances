@@ -7,8 +7,6 @@ import {
 } from '@react-navigation/drawer';
 
 import { BottomTabNavigator } from 'navigation';
-import { store } from 'store/redux';
-import { setToken } from 'features/auth';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -17,13 +15,9 @@ export type DrawerParamList = {
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 function CustomDrawerContent(props: DrawerContentComponentProps) {
-  function signOut() {
-    store.dispatch(setToken(''));
-  }
-
   return (
     <DrawerContentScrollView {...props}>
-      <DrawerItem label="Sign Out" onPress={signOut} />
+      <DrawerItem label="Sign Out" onPress={() => {}} />
     </DrawerContentScrollView>
   );
 }
