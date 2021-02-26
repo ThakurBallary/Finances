@@ -7,6 +7,8 @@ export default {
   personOutline: 'person-outline',
   podium: 'podium',
   podiumOutline: 'podium-outline',
+  settings: 'settings',
+  settingsOutline: 'settings-outline',
   wallet: 'wallet',
   walletOutline: 'wallet-outline',
 };

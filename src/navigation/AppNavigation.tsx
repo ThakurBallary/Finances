@@ -7,7 +7,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
-import { DrawerNavigator } from 'navigation';
+import { BottomTabNavigator } from 'navigation';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +22,7 @@ export default function AppNavigation() {
     <AppearanceProvider>
       <NavigationContainer theme={theme}>
         <Stack.Navigator headerMode="none">
-          <Stack.Screen name="Main" component={DrawerNavigator} />
+          <Stack.Screen name="Main" component={BottomTabNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppearanceProvider>

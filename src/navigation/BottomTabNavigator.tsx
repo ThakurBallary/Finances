@@ -4,11 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { icons } from 'assets';
-import screens, { HomeScreen, AccountsScreen } from 'screens';
+import screens, { AccountsScreen, HomeScreen, SettingsScreen } from 'screens';
 
 export type BottomTabParamList = {
-  Home: undefined;
   Accounts: undefined;
+  Home: undefined;
+  Settings: undefined;
 };
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
@@ -22,6 +23,8 @@ export default function BottomTabNavigator() {
           let iconName = focused ? icons.home : icons.homeOutline;
           if (route.name === screens.accounts) {
             iconName = focused ? icons.wallet : icons.walletOutline;
+          } else if (route.name === screens.settings) {
+            iconName = focused ? icons.settings : icons.settingsOutline;
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -33,6 +36,7 @@ export default function BottomTabNavigator() {
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Accounts" component={AccountsScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }
