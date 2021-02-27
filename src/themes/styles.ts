@@ -6,4 +6,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  sectionTitle: {
+    textTransform: 'uppercase',
+  },
+  sectionItemTitle: {
+    textTransform: 'capitalize',
+  },
 });

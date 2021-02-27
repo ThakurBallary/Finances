@@ -1,15 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-
-import { styles } from 'themes';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Languages from 'components/Languages';
+import Themes from 'components/Themes';
+import StatusBar from 'components/StatusBar';
 
 export default function Settings() {
   const { colors } = useTheme();
 
   return (
-    <View style={styles.flexCenter}>
+    <SafeAreaView>
+      <StatusBar />
       <Text style={{ color: colors.text }}>Settings Screen</Text>
-    </View>
+      <Languages />
+      <Themes />
+    </SafeAreaView>
   );
 }

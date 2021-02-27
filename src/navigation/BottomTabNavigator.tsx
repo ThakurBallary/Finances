@@ -18,6 +18,7 @@ export default function BottomTabNavigator() {
   const { colors } = useTheme();
   return (
     <Tab.Navigator
+      initialRouteName="Settings"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = focused ? icons.home : icons.homeOutline;
