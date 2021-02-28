@@ -1,14 +1,14 @@
 import React from 'react';
-import { Pressable, TextStyle } from 'react-native';
-import { useAppDispatch, useAppSelector, useLanguage } from 'hooks';
+import {Pressable, TextStyle} from 'react-native';
+import {useAppDispatch, useAppSelector, useLanguage} from 'hooks';
 import {
   Language,
   LanguageName,
   languageSelector,
   setLanguage,
 } from 'features/localisation';
-import { SectionTitle, SectionItemTitle } from 'components/texts';
-import { styles } from 'themes';
+import {SectionTitle, SectionItemTitle} from 'components/texts';
+import {styles} from 'themes';
 
 const localStyle = {
   placeholderText: {

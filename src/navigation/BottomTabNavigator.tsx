@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTheme } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {useTheme} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { icons } from 'assets';
-import screens, { AccountsScreen, HomeScreen, SettingsScreen } from 'screens';
+import {icons} from 'assets';
+import screens, {AccountsScreen, HomeScreen, SettingsScreen} from 'screens';
 
 export type BottomTabParamList = {
   Accounts: undefined;
@@ -15,12 +15,12 @@ export type BottomTabParamList = {
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const { colors } = useTheme();
+  const {colors} = useTheme();
   return (
     <Tab.Navigator
       initialRouteName="Settings"
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
           let iconName = focused ? icons.home : icons.homeOutline;
           if (route.name === screens.accounts) {
             iconName = focused ? icons.wallet : icons.walletOutline;

@@ -4,12 +4,12 @@ import {
   DefaultTheme,
   DarkTheme,
 } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabNavigator from 'navigation/BottomTabNavigator';
-import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useAppSelector } from 'hooks';
-import { themeSelector } from 'features/themes';
+import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {useAppSelector} from 'hooks';
+import {themeSelector} from 'features/themes';
 
 const Stack = createStackNavigator();
 

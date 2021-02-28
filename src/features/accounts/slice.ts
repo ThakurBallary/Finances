@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Account } from './types';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {Account} from './types';
 
 export type AccountsState = {
   accounts: Account[];
@@ -45,5 +45,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { getAccounts, setAccounts, setError } = authSlice.actions;
+export const {getAccounts, setAccounts, setError} = authSlice.actions;
 export const accounts = authSlice.reducer;

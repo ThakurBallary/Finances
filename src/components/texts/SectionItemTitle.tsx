@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, TextStyle } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import {Text, TextStyle} from 'react-native';
+import {useTheme} from '@react-navigation/native';
 
 type Props = {
   children: string;
@@ -11,10 +11,10 @@ const localStyle: TextStyle = {
   fontSize: 14,
 };
 
-export function SectionItemTitle({ children, style }: Props) {
-  const { colors } = useTheme();
+export function SectionItemTitle({children, style}: Props) {
+  const {colors} = useTheme();
 
   return (
-    <Text style={[{ color: colors.text }, localStyle, style]}>{children}</Text>
+    <Text style={[{color: colors.text}, localStyle, style]}>{children}</Text>
   );
 }

@@ -1,5 +1,5 @@
-import { AppState } from 'store/redux';
-import { LanguageName } from './slice';
+import {AppState} from 'store/redux';
+import {LanguageName} from './slice';
 
 const languages = (state: AppState) => state.localisation.languages;
 

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export type LanguageName = 'english' | 'hindi';
 
@@ -38,5 +38,5 @@ const localisationSlice = createSlice({
   },
 });
 
-export const { setLanguage } = localisationSlice.actions;
+export const {setLanguage} = localisationSlice.actions;
 export const localisation = localisationSlice.reducer;

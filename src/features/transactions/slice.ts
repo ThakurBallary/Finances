@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Transaction } from './types';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {Transaction} from './types';
 
 export type TransactionsState = {
   error: string;
@@ -63,5 +63,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { getTransactions, setTransactions, setError } = authSlice.actions;
+export const {getTransactions, setTransactions, setError} = authSlice.actions;
 export const transactions = authSlice.reducer;

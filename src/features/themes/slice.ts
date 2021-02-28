@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export type ThemeName = 'dark' | 'light' | 'system';
 
@@ -45,5 +45,5 @@ const themesSlice = createSlice({
   },
 });
 
-export const { setTheme } = themesSlice.actions;
+export const {setTheme} = themesSlice.actions;
 export const themes = themesSlice.reducer;

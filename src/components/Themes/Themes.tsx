@@ -1,9 +1,9 @@
 import React from 'react';
-import { Pressable, TextStyle } from 'react-native';
-import { useAppDispatch, useAppSelector, useLanguage } from 'hooks';
-import { themeSelector, setTheme, ThemeName, Theme } from 'features/themes';
-import { SectionTitle, SectionItemTitle } from 'components/texts';
-import { styles } from 'themes';
+import {Pressable, TextStyle} from 'react-native';
+import {useAppDispatch, useAppSelector, useLanguage} from 'hooks';
+import {themeSelector, setTheme, ThemeName, Theme} from 'features/themes';
+import {SectionTitle, SectionItemTitle} from 'components/texts';
+import {styles} from 'themes';
 
 export default function Themes() {
   const language = useLanguage();

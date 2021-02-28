@@ -1,4 +1,4 @@
-import { AppState } from 'store/redux';
+import {AppState} from 'store/redux';
 
 const selectedTheme = (state: AppState) =>
   state.themes.themes.find((theme) => theme.isSelected)?.name || 'system';

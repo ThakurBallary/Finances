@@ -1,7 +1,7 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import { PinScreen } from 'screens';
+import {PinScreen} from 'screens';
 
 export type AuthStackParamList = {
   Pin: undefined;

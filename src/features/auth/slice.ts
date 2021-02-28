@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export type AuthState = {
   pin: string;
@@ -18,5 +18,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setPin } = authSlice.actions;
+export const {setPin} = authSlice.actions;
 export const auth = authSlice.reducer;

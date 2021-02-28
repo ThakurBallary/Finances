@@ -1,4 +1,4 @@
-import { AppState } from 'store/redux';
+import {AppState} from 'store/redux';
 
 const pin = (state: AppState) => state.auth.pin;
 
