@@ -1,4 +1,5 @@
 import React from 'react';
+import {useColorScheme} from 'react-native';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -6,7 +7,6 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabNavigator from 'navigation/BottomTabNavigator';
-import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useAppSelector} from 'hooks';
 import {themeSelector} from 'features/themes';
@@ -26,13 +26,11 @@ export default function AppNavigation() {
 
   return (
     <SafeAreaProvider>
-      <AppearanceProvider>
-        <NavigationContainer theme={theme}>
-          <Stack.Navigator headerMode="none">
-            <Stack.Screen name="Main" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </AppearanceProvider>
+      <NavigationContainer theme={theme}>
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="Main" component={BottomTabNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
