@@ -63,8 +63,8 @@
       "json",
       "node"
     ],
-    "setupFiles": [
-      "./src/config/jest.setup.js",
+    "setupFilesAfterEnv": [
+      "./src/config/tests/jest.setup.js",
       "@testing-library/react-native/dont-cleanup-after-each"
     ],
     "transformIgnorePatterns": [

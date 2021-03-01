@@ -1,10 +1,9 @@
 import {AppState} from 'store/redux';
-import {LanguageName} from './slice';
 
 const languages = (state: AppState) => state.localisation.languages;
 
-const selectedLanguage = (state: AppState): LanguageName =>
-  state.localisation.languages.find((e) => e.isSelected)?.name || 'english';
+const selectedLanguage = (state: AppState) =>
+  state.localisation.languages.find((e) => e.isSelected)?.name;
 
 export default {
   languages,

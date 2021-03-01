@@ -27,3 +27,5 @@ jest.mock('redux-persist', () => {
       .mockImplementation((config, reducers) => reducers),
   };
 });
+
+import '@testing-library/jest-native/extend-expect';

@@ -10,6 +10,7 @@ module.exports = {
           api: './src/api',
           assets: './src/assets',
           components: './src/components',
+          config: './src/config',
           dictionary: './src/dictionary',
           features: './src/features',
           hooks: './src/hooks',

@@ -1,17 +1,11 @@
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {cleanup, fireEvent, render} from '@testing-library/react-native';
+import {cleanup, fireEvent, render} from 'config/tests/test-utils';
 import {store} from 'store/redux';
 import Languages from '../Languages';
 
 describe('components/Languages', () => {
   afterAll(cleanup);
-  const component = (
-    <Provider store={store}>
-      <Languages />
-    </Provider>
-  );
-  const {getByText} = render(component);
+  const {getByText} = render(<Languages />);
 
   test('initial state', () => {
     expect(getByText('language')).toBeDefined();
