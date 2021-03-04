@@ -3,47 +3,45 @@ import {Account} from './types';
 
 export type AccountsState = {
   accounts: Account[];
-  error: string;
-  isLoading: boolean;
 };
 
 export const initialState: AccountsState = {
   accounts: [
     {
+      balance: 12345.67,
       bank: 'ABC',
       branch: 'Avenue Street',
+      isActive: true,
       name: 'Mark',
       number: '012345678901',
     },
     {
+      balance: 12345.67,
       bank: 'DEF',
       branch: 'Park Lakers',
+      isActive: true,
       name: 'Alex',
       number: '012345678902',
     },
   ],
-  error: '',
-  isLoading: false,
 };
 
-const authSlice = createSlice({
+const accountsSlice = createSlice({
   name: 'accounts',
   initialState,
   reducers: {
-    getAccounts(state) {
-      state.isLoading = true;
-      state.error = '';
-    },
-    setAccounts(state, action: PayloadAction<Account[]>) {
-      state.isLoading = false;
-      state.accounts = action.payload;
-    },
-    setError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
+    setAccount(state, action: PayloadAction<Account>) {
+      const index = state.accounts.findIndex(
+        (account) => account.number === action.payload.number,
+      );
+      if (index < 0) {
+        state.accounts.push(action.payload);
+      } else {
+        state.accounts.splice(index, 1, action.payload);
+      }
     },
   },
 });
 
-export const {getAccounts, setAccounts, setError} = authSlice.actions;
-export const accounts = authSlice.reducer;
+export const {setAccount} = accountsSlice.actions;
+export const accounts = accountsSlice.reducer;
