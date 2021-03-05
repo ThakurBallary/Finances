@@ -22,11 +22,19 @@ export default function Transactions({number}: Props) {
     return <Item {...item} />;
   }
 
+  let data: Transaction[] = [
+    {
+      accountNumber: number,
+      amount: 0,
+      date: '',
+      id: '',
+      isActive: true,
+      title: '',
+    },
+    ...(number === '0' ? allActiveTransactions : transactions),
+  ];
+
   return (
-    <FlatList
-      data={number === '0' ? allActiveTransactions : transactions}
-      keyExtractor={keyExtractor}
-      renderItem={renderItem}
-    />
+    <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
   );
 }

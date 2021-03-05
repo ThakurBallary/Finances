@@ -174,16 +174,16 @@ export default function AccountTab({number}: Props) {
   return (
     <>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateBalance}
+        {account?.balance}
       </Text>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateBank}
+        {account?.bank}
       </Text>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateBranch}
+        {account?.branch}
       </Text>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateName}
+        {account?.name}
       </Text>
       <Text style={{color: colors.text}}>{number}</Text>
     </>
