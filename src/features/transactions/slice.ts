@@ -2,66 +2,66 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Transaction} from './types';
 
 export type TransactionsState = {
-  error: string;
-  isLoading: boolean;
   transactions: Transaction[];
 };
 
 export const initialState: TransactionsState = {
-  error: '',
-  isLoading: false,
   transactions: [
     {
       accountNumber: '012345678901',
-      amount: '511846',
+      amount: 511846,
       date: '2021-01-01 11:11:11',
       id: '1614279758360',
-      name: 'AA',
+      isActive: true,
+      title: 'AA',
     },
     {
       accountNumber: '012345678901',
-      amount: '-14568',
+      amount: -14568,
       date: '2021-01-21 18:44:19',
-      id: '1614279758360',
+      id: '1614279758361',
+      isActive: true,
       mode: 'GPay',
-      name: 'BB',
+      title: 'BB',
     },
     {
       accountNumber: '012345678902',
-      amount: '811846',
+      amount: 811846,
       date: '2021-02-04 16:58:23',
-      id: '1614279758360',
-      name: 'AB',
+      id: '1614279758362',
+      isActive: true,
+      title: 'AB',
     },
     {
       accountNumber: '012345678902',
-      amount: '-44568',
+      amount: -44568,
       date: '2021-02-08 09:01:56',
-      id: '1614279758360',
+      id: '1614279758363',
+      isActive: true,
       mode: 'NetBanking',
-      name: 'BC',
+      title: 'BC',
     },
   ],
 };
 
-const authSlice = createSlice({
+const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
   reducers: {
-    getTransactions(state) {
-      state.isLoading = true;
-      state.error = '';
-    },
-    setTransactions(state, action: PayloadAction<Transaction[]>) {
-      state.isLoading = false;
-      state.transactions = action.payload;
-    },
-    setError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
+    setTransaction(state, action: PayloadAction<Transaction>) {
+      const index = state.transactions.findIndex(
+        (transaction) => transaction.id === action.payload.id,
+      );
+      console.log(action.payload);
+
+      if (index < 0) {
+        state.transactions.push(action.payload);
+      } else {
+        state.transactions.splice(index, 1, action.payload);
+      }
     },
   },
 });
 
-export const {getTransactions, setTransactions, setError} = authSlice.actions;
-export const transactions = authSlice.reducer;
+export const {setTransaction} = transactionsSlice.actions;
+export const transactions = transactionsSlice.reducer;
