@@ -3,6 +3,7 @@ import {Text, TextInput} from 'react-native';
 import {setTransaction, Transaction} from 'features/transactions';
 import {useAppDispatch, useLanguage} from 'hooks';
 import {useTheme} from '@react-navigation/native';
+import {setBalance} from 'features/accounts';
 
 export default function TransactionItem({
   accountNumber,
@@ -15,7 +16,7 @@ export default function TransactionItem({
   const {colors} = useTheme();
   const language = useLanguage();
   const dispatch = useAppDispatch();
-  let defaultAmount = amount?.toString() || '';
+  let defaultAmount = amount === 0 ? '' : amount?.toString();
   let defaultDate = date || '';
   let defaultMode = mode || '';
   let defaultTitle = title || '';
@@ -69,11 +70,17 @@ export default function TransactionItem({
     const updatedTransaction = prepareTransaction();
     updatedTransaction.isActive = false;
     dispatch(setTransaction(updatedTransaction));
+    dispatch(
+      setBalance({
+        amount: -1 * amount,
+        number: accountNumber,
+      }),
+    );
   }
 
   function onCancel() {
     reset();
-    if (accountNumber) {
+    if (id) {
       setIsEditMode(false);
     }
   }
@@ -81,7 +88,13 @@ export default function TransactionItem({
   function onSave() {
     const updatedTransaction = prepareTransaction();
     dispatch(setTransaction(updatedTransaction));
-    if (accountNumber) {
+    dispatch(
+      setBalance({
+        amount: updatedTransaction.amount - amount,
+        number: updatedTransaction.accountNumber,
+      }),
+    );
+    if (id) {
       setIsEditMode(false);
     } else {
       reset();
@@ -144,16 +157,16 @@ export default function TransactionItem({
   return (
     <>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateDate}
+        {date}
       </Text>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateTitle}
+        {title}
       </Text>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateMode}
+        {mode}
       </Text>
       <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {stateAmount}
+        {amount}
       </Text>
     </>
   );

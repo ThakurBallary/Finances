@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Account} from './types';
+import {Account, SetBalanceParams} from './types';
 
 export type AccountsState = {
   accounts: Account[];
@@ -8,7 +8,7 @@ export type AccountsState = {
 export const initialState: AccountsState = {
   accounts: [
     {
-      balance: 12345.67,
+      balance: 0,
       bank: 'ABC',
       branch: 'Avenue Street',
       isActive: true,
@@ -16,7 +16,7 @@ export const initialState: AccountsState = {
       number: '012345678901',
     },
     {
-      balance: 12345.67,
+      balance: 0,
       bank: 'DEF',
       branch: 'Park Lakers',
       isActive: true,
@@ -40,8 +40,17 @@ const accountsSlice = createSlice({
         state.accounts.splice(index, 1, action.payload);
       }
     },
+    setBalance(state, action: PayloadAction<SetBalanceParams>) {
+      const account = state.accounts.find(
+        (e) => e.number === action.payload.number,
+      );
+      if (account) {
+        account.balance += action.payload.amount;
+        account.balance = JSON.parse(account.balance.toFixed(2));
+      }
+    },
   },
 });
 
-export const {setAccount} = accountsSlice.actions;
+export const {setAccount, setBalance} = accountsSlice.actions;
 export const accounts = accountsSlice.reducer;

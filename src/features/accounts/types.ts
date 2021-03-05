@@ -6,3 +6,8 @@ export type Account = {
   name: string;
   number: string;
 };
+
+export type SetBalanceParams = {
+  amount: number;
+  number: string;
+};
