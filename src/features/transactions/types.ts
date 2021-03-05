@@ -1,8 +1,9 @@
 export type Transaction = {
   accountNumber: string;
-  amount: string;
+  amount: number;
   date: string;
   id: string;
+  isActive: boolean;
   mode?: string;
-  name: string;
+  title: string;
 };
