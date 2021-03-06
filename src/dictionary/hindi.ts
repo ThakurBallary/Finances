@@ -17,6 +17,7 @@ export default {
   light: 'सफेद',
   mode: 'मोड',
   save: 'सहेजें',
+  settings: 'सेटिंग्स',
   system: 'प्रणाली',
   theme: 'थीम',
   title: 'शीर्षक',

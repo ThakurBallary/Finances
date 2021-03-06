@@ -1,18 +1,22 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {useTheme} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Languages from 'components/Languages';
 import Themes from 'components/Themes';
 import StatusBar from 'components/StatusBar';
+import {ScreenHeader} from 'components/layouts';
+import {useLanguage} from 'hooks';
+import {useTheme} from '@react-navigation/native';
+import {styles} from 'themes';
 
 export default function Settings() {
   const {colors} = useTheme();
+  const language = useLanguage();
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={[styles.screenContainer, {backgroundColor: colors.card}]}>
       <StatusBar />
-      <Text style={{color: colors.text}}>Settings Screen</Text>
+      <ScreenHeader text={language.settings} />
       <Languages />
       <Themes />
     </SafeAreaView>

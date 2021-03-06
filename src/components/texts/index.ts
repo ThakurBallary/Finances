@@ -1,2 +1,3 @@
-export * from './SectionTitle';
-export * from './SectionItemTitle';
+export * from './SectionHeaderText';
+export * from './SectionItemText';
+export * from './ScreenHeaderText';

@@ -17,6 +17,7 @@ export default {
   light: 'light',
   mode: 'mode',
   save: 'save',
+  settings: 'settings',
   system: 'system',
   theme: 'theme',
   title: 'title',

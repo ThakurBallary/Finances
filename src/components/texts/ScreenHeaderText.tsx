@@ -3,18 +3,18 @@ import {Text, TextStyle} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 type Props = {
-  children: string;
+  text: string;
   style?: TextStyle;
 };
 
 const localStyle: TextStyle = {
-  fontSize: 14,
+  fontSize: 20,
+  textTransform: 'capitalize',
+  fontWeight: 'bold',
 };
 
-export function SectionItemTitle({children, style}: Props) {
+export function ScreenHeaderText({text, style}: Props) {
   const {colors} = useTheme();
 
-  return (
-    <Text style={[{color: colors.text}, localStyle, style]}>{children}</Text>
-  );
+  return <Text style={[{color: colors.text}, localStyle, style]}>{text}</Text>;
 }
