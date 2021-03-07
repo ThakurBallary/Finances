@@ -1,13 +1,11 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
-    ['module:react-native-dotenv'],
     [
       'module-resolver',
       {
         root: ['.'],
         alias: {
-          api: './src/api',
           assets: './src/assets',
           components: './src/components',
           config: './src/config',
@@ -18,7 +16,6 @@ module.exports = {
           screens: './src/screens',
           store: './src/store',
           themes: './src/themes',
-          utils: './src/utils',
         },
       },
     ],
