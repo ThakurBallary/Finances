@@ -12,6 +12,7 @@ enum icons {
   personOutline = 'person-outline',
   podium = 'podium',
   podiumOutline = 'podium-outline',
+  rupee = 'rupee',
   settings = 'settings',
   settingsOutline = 'settings-outline',
   wallet = 'wallet',
