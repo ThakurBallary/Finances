@@ -9,12 +9,14 @@ const times = {
 const fonts = {
   default: base * 7,
   defaultTitle: base * 10,
-  screenTitle: base * 8,
-  sectionTitle: base * 9,
+  screenTitle: base * 10,
+  sectionTitle: base * 8,
+  sectionItem: base * 8,
+  balance: base * 14,
 };
 
 export default {
   base,
-  fonts,
+  ...fonts,
   ...times,
 };

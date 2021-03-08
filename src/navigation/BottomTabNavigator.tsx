@@ -34,6 +34,8 @@ export default function BottomTabNavigator() {
         activeTintColor: colors.text,
         inactiveTintColor: colors.text,
         showLabel: false,
+        style: {backgroundColor: colors.background},
+        keyboardHidesTabBar: true,
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Accounts" component={AccountsScreen} />

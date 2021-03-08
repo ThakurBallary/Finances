@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
 type Props = {
-  children: React.ReactElement | React.ReactElement[];
+  children: React.ReactChild | React.ReactChild[];
   style?: object;
 };
 

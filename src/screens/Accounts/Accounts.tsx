@@ -25,17 +25,6 @@ function Tabs() {
       />
     );
   });
-  if (accounts.length > 1) {
-    const number = '0';
-    tabs.unshift(
-      <Tab.Screen
-        key={number}
-        name={language.all}
-        component={AccountTab}
-        initialParams={{number}}
-      />,
-    );
-  }
   if (accounts.length < 4) {
     tabs.push(
       <Tab.Screen
@@ -50,7 +39,7 @@ function Tabs() {
     <Tab.Navigator
       tabBarOptions={{
         indicatorStyle: {backgroundColor: colors.text},
-        style: {paddingTop: insets.top},
+        style: {paddingTop: insets.top, backgroundColor: colors.background},
       }}>
       {tabs}
     </Tab.Navigator>

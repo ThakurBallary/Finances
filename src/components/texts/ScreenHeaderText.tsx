@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TextStyle} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import {sizes} from 'themes';
 
 type Props = {
   text: string;
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const localStyle: TextStyle = {
-  fontSize: 20,
+  fontSize: sizes.screenTitle,
   textTransform: 'capitalize',
   fontWeight: 'bold',
 };

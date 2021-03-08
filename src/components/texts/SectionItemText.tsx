@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TextStyle} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import {sizes} from 'themes';
 
 type Props = {
   isSelected?: boolean;
@@ -9,7 +10,7 @@ type Props = {
 };
 
 const localStyle: TextStyle = {
-  fontSize: 16,
+  fontSize: sizes.sectionItem,
   textTransform: 'capitalize',
 };
 
