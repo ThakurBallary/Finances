@@ -19,6 +19,9 @@ export function formatAmount(amount: string): string {
     integer = amount.substring(0, indexOfPoint);
     decimal = amount.substr(indexOfPoint, 3);
   }
+  if (integer.length > 1 && integer[0] === '0') {
+    integer = integer.substring(1);
+  }
   if (integer.length > 7) {
     return 'false';
   } else if (integer.length > 5) {

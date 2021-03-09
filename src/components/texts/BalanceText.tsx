@@ -2,9 +2,10 @@ import React from 'react';
 import {Text, TextStyle} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {sizes} from 'themes';
+import {formatAmount} from 'utils';
 
 type Props = {
-  text: React.ReactNode;
+  text: string;
   style?: TextStyle;
 };
 
@@ -14,6 +15,9 @@ const localStyle: TextStyle = {
 
 export function BalanceText({text, style}: Props) {
   const {colors} = useTheme();
-
-  return <Text style={[{color: colors.text}, localStyle, style]}>{text}</Text>;
+  return (
+    <Text style={[{color: colors.text}, localStyle, style]}>
+      {formatAmount(text)}
+    </Text>
+  );
 }

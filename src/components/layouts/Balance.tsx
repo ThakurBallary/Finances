@@ -5,7 +5,7 @@ import {BalanceInput} from 'components/inputs';
 import {BalanceText, Label} from 'components/texts';
 import {Row} from './Row';
 import {useLanguage} from 'hooks';
-import {isiOS} from 'utils';
+import {isAndroid} from 'utils';
 
 type Props = {
   isEditMode?: boolean;
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   row: {
     alignItems: 'center',
     paddingVertical: 0,
-    marginTop: isiOS() ? 0 : -14,
   },
 });
 
@@ -30,10 +29,11 @@ export function Balance({isEditMode, text, ...inputProps}: Props) {
   if (!isEditMode && text) {
     component = <BalanceText text={text} />;
   }
+  const rowStyle = {marginTop: isAndroid() ? (isEditMode ? -14 : -4) : 0};
   return (
     <View style={styles.container}>
       <Label text={language.balance} />
-      <Row style={styles.row}>
+      <Row style={[styles.row, rowStyle]}>
         <RupeeIcon />
         {component}
       </Row>
