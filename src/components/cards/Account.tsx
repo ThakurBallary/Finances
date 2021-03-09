@@ -1,35 +1,28 @@
 import React, {useState} from 'react';
-import {Text, TextInput} from 'react-native';
-import {useTheme} from '@react-navigation/native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {Account, accountSelector, setAccount} from 'features/accounts';
 import {useAppDispatch, useAppSelector, useLanguage} from 'hooks';
+import {AccountField, Balance, Row} from 'components/layouts';
+import {OutlineButton, PrimaryButton} from 'components/buttons';
 
 type Props = {
   number: string;
 };
 
 export default function AccountTab({number}: Props) {
-  const {colors} = useTheme();
-  const language = useLanguage();
   const dispatch = useAppDispatch();
+  const language = useLanguage();
   const account = useAppSelector((state) =>
     accountSelector.account(state, number),
   );
-  const accounts = useAppSelector(accountSelector.accounts);
   let defaultBalance = account?.balance?.toString() || '';
   let defaultBank = account?.bank || '';
   let defaultBranch = account?.branch || '';
   let defaultName = account?.name || '';
   let defaultNumber = account?.number || '';
-  if (number === '0') {
-    let totalBalance = 0;
-    for (const eachAccount of accounts) {
-      totalBalance += eachAccount.balance;
-    }
-    defaultBalance = totalBalance.toString();
-  }
 
-  const [isEditMode, setIsEditMode] = useState(number === '');
+  const isEditMode = number === '';
+  const [isReset, setIsReset] = useState(false);
   const [stateBalance, setStateBalance] = useState(defaultBalance);
   const [stateBank, setStateBank] = useState(defaultBank);
   const [stateBranch, setStateBranch] = useState(defaultBranch);
@@ -37,16 +30,13 @@ export default function AccountTab({number}: Props) {
   const [stateNumber, setStateNumber] = useState(defaultNumber);
 
   const reset = () => {
+    setIsReset(true);
     setStateBalance(defaultBalance);
     setStateBank(defaultBank);
     setStateBranch(defaultBranch);
     setStateName(defaultName);
     setStateNumber(defaultNumber);
   };
-
-  function turnOnEditMode() {
-    setIsEditMode(true);
-  }
 
   function onChangeBalance(balance: string) {
     setStateBalance(balance);
@@ -79,113 +69,77 @@ export default function AccountTab({number}: Props) {
     };
   }
 
-  function onDelete() {
-    const updatedAccount = prepareAccount();
-    updatedAccount.isActive = false;
-    dispatch(setAccount(updatedAccount));
-  }
-
   function onCancel() {
     reset();
-    if (number) {
-      setIsEditMode(false);
-    }
   }
 
   function onSave() {
     const updatedAccount = prepareAccount();
     dispatch(setAccount(updatedAccount));
-    if (number) {
-      setIsEditMode(false);
-    } else {
-      reset();
-    }
-  }
-
-  if (number === '0') {
-    return <Text style={{color: colors.text}}>{stateBalance}</Text>;
-  }
-
-  if (isEditMode) {
-    return (
-      <>
-        <TextInput
-          defaultValue={stateBalance}
-          keyboardType="numeric"
-          maxLength={10}
-          onChangeText={onChangeBalance}
-          placeholder={language.balance}
-          placeholderTextColor={colors.text}
-          style={{color: colors.text}}
-        />
-        <TextInput
-          defaultValue={stateBank}
-          maxLength={40}
-          onChangeText={onChangeBank}
-          placeholder={language.bankName}
-          placeholderTextColor={colors.text}
-          style={{color: colors.text}}
-        />
-        <TextInput
-          defaultValue={stateBranch}
-          maxLength={40}
-          onChangeText={onChangeBranch}
-          placeholder={language.branch}
-          placeholderTextColor={colors.text}
-          style={{color: colors.text}}
-        />
-        <TextInput
-          defaultValue={stateName}
-          maxLength={40}
-          onChangeText={onChangeName}
-          placeholder={language.accountHolderName}
-          placeholderTextColor={colors.text}
-          style={{color: colors.text}}
-        />
-        {number ? (
-          <Text style={{color: colors.text}}>{number}</Text>
-        ) : (
-          <TextInput
-            defaultValue={stateNumber}
-            maxLength={40}
-            onChangeText={onChangeNumber}
-            placeholder={language.accountNumber}
-            placeholderTextColor={colors.text}
-            style={{color: colors.text}}
-          />
-        )}
-        <>
-          {!!number && (
-            <Text style={{color: colors.text}} onPress={onDelete}>
-              {language.delete}
-            </Text>
-          )}
-          <Text style={{color: colors.text}} onPress={onCancel}>
-            {language.cancel}
-          </Text>
-          <Text style={{color: colors.text}} onPress={onSave}>
-            {language.save}
-          </Text>
-        </>
-      </>
-    );
+    reset();
   }
 
   return (
     <>
-      <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {account?.balance}
-      </Text>
-      <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {account?.bank}
-      </Text>
-      <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {account?.branch}
-      </Text>
-      <Text style={{color: colors.text}} onPress={turnOnEditMode}>
-        {account?.name}
-      </Text>
-      <Text style={{color: colors.text}}>{number}</Text>
+      <Balance
+        defaultValue={stateBalance}
+        isEditMode={isEditMode}
+        isReset={isReset}
+        onChangeText={onChangeBalance}
+        placeholder={'0.00'}
+        text={account?.balance.toString()}
+      />
+      <ScrollView keyboardShouldPersistTaps="always">
+        <AccountField
+          defaultValue={stateNumber}
+          isEditMode={isEditMode}
+          keyboardType="numeric"
+          label={language.accountNumber}
+          maxLength={20}
+          onChangeText={onChangeNumber}
+          placeholder={language.accountNumber}
+          text={account?.number}
+        />
+        <AccountField
+          defaultValue={stateName}
+          isEditMode={isEditMode}
+          label={language.accountHolder}
+          maxLength={40}
+          onChangeText={onChangeName}
+          placeholder={language.accountHolder}
+          text={account?.name}
+        />
+        <AccountField
+          defaultValue={stateBank}
+          isEditMode={isEditMode}
+          label={language.bank}
+          maxLength={40}
+          onChangeText={onChangeBank}
+          placeholder={language.bank}
+          text={account?.bank}
+        />
+        <AccountField
+          defaultValue={stateBranch}
+          isEditMode={isEditMode}
+          label={language.branch}
+          maxLength={40}
+          onChangeText={onChangeBranch}
+          placeholder={language.branch}
+          text={account?.branch}
+        />
+        {isEditMode && (
+          <Row style={styles.buttonsContainer}>
+            <OutlineButton onPress={onCancel} text={language.cancel} />
+            <PrimaryButton onPress={onSave} text={language.save} />
+          </Row>
+        )}
+      </ScrollView>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonsContainer: {
+    paddingHorizontal: 16,
+  },
+});

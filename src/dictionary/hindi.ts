@@ -1,11 +1,11 @@
 export default {
-  accountHolderName: 'खाता धारक का नाम',
+  accountHolder: 'खाता धारक',
   accountNumber: 'खाता संख्या',
   add: 'जोड़ना',
   all: 'सब',
   amount: 'रकम',
   balance: 'संतुलन',
-  bankName: 'बैंक का नाम',
+  bank: 'बैंक',
   branch: 'डाली',
   cancel: 'रद्द करना',
   dark: 'काला',

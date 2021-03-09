@@ -1,11 +1,11 @@
 export default {
-  accountHolderName: 'account holder name',
+  accountHolder: 'account holder',
   accountNumber: 'account number',
   add: 'add',
   all: 'all',
   amount: 'amount',
   balance: 'balance',
-  bankName: 'bank name',
+  bank: 'bank',
   branch: 'branch',
   cancel: 'cancel',
   dark: 'dark',

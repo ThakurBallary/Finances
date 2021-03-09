@@ -6,24 +6,7 @@ export type AccountsState = {
 };
 
 export const initialState: AccountsState = {
-  accounts: [
-    {
-      balance: 0,
-      bank: 'ABC',
-      branch: 'Avenue Street',
-      isActive: true,
-      name: 'Mark',
-      number: '012345678901',
-    },
-    {
-      balance: 0,
-      bank: 'DEF',
-      branch: 'Park Lakers',
-      isActive: true,
-      name: 'Alex',
-      number: '012345678902',
-    },
-  ],
+  accounts: [],
 };
 
 const accountsSlice = createSlice({

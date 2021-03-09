@@ -9,6 +9,7 @@ import {isAndroid} from 'utils';
 
 type Props = {
   isEditMode?: boolean;
+  isReset: boolean;
   text?: string;
 } & TextInputProps;
 
