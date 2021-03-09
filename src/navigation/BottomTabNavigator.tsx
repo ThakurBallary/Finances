@@ -18,7 +18,7 @@ export default function BottomTabNavigator() {
   const {colors} = useTheme();
   return (
     <Tab.Navigator
-      initialRouteName="Settings"
+      initialRouteName="Accounts"
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName = focused ? icons.podium : icons.podiumOutline;
