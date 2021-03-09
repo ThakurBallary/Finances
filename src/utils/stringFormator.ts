@@ -6,8 +6,9 @@ export function formatAmount(amount: string): string {
     if (
       !validCharacters.includes(ch) ||
       indexOfPoint !== amount.lastIndexOf('.')
-    )
+    ) {
       return 'false';
+    }
   }
   if (amount === '.') {
     amount = '0.';

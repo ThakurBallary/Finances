@@ -13,6 +13,7 @@ const fonts = {
   sectionTitle: base * 8,
   sectionItem: base * 8,
   balance: base * 14,
+  label: base * 7,
 };
 
 export default {
