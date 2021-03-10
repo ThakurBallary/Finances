@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import StatusBar from 'components/StatusBar';
+import {AppStatusBar} from 'components';
 import {useTheme} from '@react-navigation/native';
 import {styles} from 'themes';
 
@@ -14,7 +14,7 @@ export function ScreenContainer({children}: Props) {
   return (
     <SafeAreaView
       style={[styles.screenContainer, {backgroundColor: colors.background}]}>
-      <StatusBar />
+      <AppStatusBar />
       {children}
     </SafeAreaView>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
-export default function AppStatusBar() {
+export function AppStatusBar() {
   const {colors, dark} = useTheme();
   return (
     <StatusBar

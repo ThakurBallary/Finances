@@ -1,6 +1,8 @@
 enum icons {
   albums = 'albums',
   albumsOutline = 'albums-outline',
+  chevronDownCircleOutline = 'chevron-down-circle-outline',
+  chevronUpCircleOutline = 'chevron-up-circle-outline',
   colorWand = 'color-wand',
   colorWandOutline = 'color-wand-outline',
   contrast = 'contrast',

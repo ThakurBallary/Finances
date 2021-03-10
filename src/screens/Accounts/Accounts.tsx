@@ -3,7 +3,7 @@ import {useTheme} from '@react-navigation/native';
 import {useAppSelector, useLanguage} from 'hooks';
 import {accountSelector} from 'features/accounts';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import StatusBar from 'components/StatusBar';
+import {AppStatusBar} from 'components';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import AccountTab from './Tab';
 
@@ -49,7 +49,7 @@ function Tabs() {
 export default function Accounts() {
   return (
     <>
-      <StatusBar />
+      <AppStatusBar />
       <Tabs />
     </>
   );
