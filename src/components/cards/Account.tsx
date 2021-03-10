@@ -4,8 +4,8 @@ import {accountSelector, setAccount} from 'features/accounts';
 import {useAppDispatch, useAppSelector, useLanguage} from 'hooks';
 import {AccountField, Balance, Row} from 'components/layouts';
 import {OutlineButton, PrimaryButton} from 'components/buttons';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {icons} from 'assets';
+import {ToggleIcon} from 'components/icons';
 
 type Props = {
   number: string;
@@ -151,17 +151,16 @@ export default function AccountTab({number}: Props) {
           </ScrollView>
         </View>
       )}
-      {!isEditMode && (
-        <Icon
-          onPress={toggleShowDetails}
-          name={
-            showDetails
-              ? icons.chevronUpCircleOutline
-              : icons.chevronDownCircleOutline
-          }
-          style={styles.toggleShowDetailIcon}
-        />
-      )}
+      <ToggleIcon
+        onPress={toggleShowDetails}
+        name={
+          isEditMode
+            ? undefined
+            : showDetails
+            ? icons.chevronUpCircleOutline
+            : icons.chevronDownCircleOutline
+        }
+      />
     </>
   );
 }
@@ -169,9 +168,5 @@ export default function AccountTab({number}: Props) {
 const styles = StyleSheet.create({
   buttonsContainer: {
     paddingHorizontal: 16,
-  },
-  toggleShowDetailIcon: {
-    fontSize: 24,
-    alignSelf: 'center',
   },
 });

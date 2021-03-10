@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, TextInputProps, View} from 'react-native';
-import {RupeeIcon} from 'components/icons/RupeeIcon';
+import {RupeeIcon} from 'components/icons';
 import {BalanceInput} from 'components/inputs';
 import {BalanceText, Label} from 'components/texts';
 import {Row} from './Row';
