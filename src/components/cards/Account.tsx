@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {Account, accountSelector, setAccount} from 'features/accounts';
+import {accountSelector, setAccount} from 'features/accounts';
 import {useAppDispatch, useAppSelector, useLanguage} from 'hooks';
 import {AccountField, Balance, Row} from 'components/layouts';
 import {OutlineButton, PrimaryButton} from 'components/buttons';
@@ -23,20 +23,12 @@ export default function AccountTab({number}: Props) {
 
   const isEditMode = number === '';
   const [isReset, setIsReset] = useState(false);
+  const [isValid, setIsValid] = useState(false);
   const [stateBalance, setStateBalance] = useState(defaultBalance);
   const [stateBank, setStateBank] = useState(defaultBank);
   const [stateBranch, setStateBranch] = useState(defaultBranch);
   const [stateName, setStateName] = useState(defaultName);
   const [stateNumber, setStateNumber] = useState(defaultNumber);
-
-  const reset = () => {
-    setIsReset(true);
-    setStateBalance(defaultBalance);
-    setStateBank(defaultBank);
-    setStateBranch(defaultBranch);
-    setStateName(defaultName);
-    setStateNumber(defaultNumber);
-  };
 
   function onChangeBalance(balance: string) {
     setStateBalance(balance);
@@ -58,26 +50,36 @@ export default function AccountTab({number}: Props) {
     setStateNumber(accountNumber);
   }
 
-  function prepareAccount(): Account {
-    return {
-      balance: JSON.parse(stateBalance),
-      bank: stateBank,
-      branch: stateBranch,
-      isActive: true,
-      name: stateName,
-      number: stateNumber,
-    };
-  }
-
-  function onCancel() {
-    reset();
+  function reset() {
+    setIsReset(true);
+    setStateBalance(defaultBalance);
+    setStateBank(defaultBank);
+    setStateBranch(defaultBranch);
+    setStateName(defaultName);
+    setStateNumber(defaultNumber);
   }
 
   function onSave() {
-    const updatedAccount = prepareAccount();
-    dispatch(setAccount(updatedAccount));
+    dispatch(
+      setAccount({
+        balance: JSON.parse(stateBalance),
+        bank: stateBank,
+        branch: stateBranch,
+        isActive: true,
+        name: stateName,
+        number: stateNumber,
+      }),
+    );
     reset();
   }
+
+  useEffect(() => {
+    setIsValid(
+      ![stateBalance, stateBank, stateBranch, stateName, stateNumber].includes(
+        '',
+      ),
+    );
+  }, [stateBalance, stateBank, stateBranch, stateName, stateNumber]);
 
   return (
     <>
@@ -129,8 +131,12 @@ export default function AccountTab({number}: Props) {
         />
         {isEditMode && (
           <Row style={styles.buttonsContainer}>
-            <OutlineButton onPress={onCancel} text={language.cancel} />
-            <PrimaryButton onPress={onSave} text={language.save} />
+            <OutlineButton onPress={reset} text={language.cancel} />
+            <PrimaryButton
+              isDisabled={!isValid}
+              onPress={onSave}
+              text={language.save}
+            />
           </Row>
         )}
       </ScrollView>

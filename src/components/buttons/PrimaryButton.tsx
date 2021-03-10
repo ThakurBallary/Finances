@@ -4,6 +4,7 @@ import {useTheme} from '@react-navigation/native';
 import {sizes} from 'themes';
 
 type Props = {
+  isDisabled: boolean;
   onPress: () => void;
   style?: object;
   text: string;
@@ -26,14 +27,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export function PrimaryButton({onPress, style, text}: Props) {
+export function PrimaryButton({isDisabled, onPress, style, text}: Props) {
   const {colors} = useTheme();
+  const opacity = isDisabled ? 0.6 : 1;
   return (
     <Pressable
-      onPress={onPress}
+      onPress={isDisabled ? null : onPress}
       style={[
         styles.container,
-        {backgroundColor: colors.text, borderColor: colors.text},
+        {
+          backgroundColor: colors.text,
+          borderColor: colors.text,
+          opacity,
+        },
         style,
       ]}>
       <Text style={[styles.text, {color: colors.card}]}>{text}</Text>
