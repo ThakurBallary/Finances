@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 28,
     paddingRight: 4,
-    paddingTop: 4,
+    paddingTop: 6,
     opacity: 0.8,
   },
 });
