@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {AppStatusBar} from 'components';
+import {AppStatusBar} from 'components/StatusBar';
 import {useTheme} from '@react-navigation/native';
 import {styles} from 'themes';
 
