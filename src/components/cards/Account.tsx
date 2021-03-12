@@ -3,7 +3,7 @@ import {ScrollView, StyleSheet, View} from 'react-native';
 import {accountSelector, setAccount} from 'features/accounts';
 import {useAppDispatch, useAppSelector, useLanguage} from 'hooks';
 import {AccountField, Balance, Row} from 'components/layouts';
-import {OutlineButton, PrimaryButton} from 'components/buttons';
+import {TextButton} from 'components/buttons';
 import {icons} from 'assets';
 import {ToggleIcon} from 'components/icons';
 
@@ -140,8 +140,12 @@ export default function AccountTab({number}: Props) {
             />
             {isEditMode && (
               <Row style={styles.buttonsContainer}>
-                <OutlineButton onPress={reset} text={language.cancel} />
-                <PrimaryButton
+                <TextButton
+                  onPress={reset}
+                  style={styles.cancelButton}
+                  text={language.cancel}
+                />
+                <TextButton
                   isDisabled={!isValid}
                   onPress={onSave}
                   text={language.save}
@@ -168,5 +172,9 @@ export default function AccountTab({number}: Props) {
 const styles = StyleSheet.create({
   buttonsContainer: {
     paddingHorizontal: 16,
+    justifyContent: 'space-evenly',
+  },
+  cancelButton: {
+    opacity: 0.6,
   },
 });

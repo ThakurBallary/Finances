@@ -4,17 +4,17 @@ import {useTheme} from '@react-navigation/native';
 import {sizes} from 'themes';
 
 type Props = {
+  isDisabled?: boolean;
   onPress: () => void;
   style?: object;
   text: string;
+  textStyle?: object;
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingVertical: 12,
     alignItems: 'center',
-    margin: 16,
   },
   text: {
     fontSize: sizes.default,
@@ -23,11 +23,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export function TextButton({onPress, style, text}: Props) {
+export function TextButton({
+  isDisabled,
+  onPress,
+  style,
+  text,
+  textStyle,
+}: Props) {
   const {colors} = useTheme();
+  const opacity = isDisabled ? 0.6 : 1;
   return (
-    <Pressable onPress={onPress} style={[styles.container, style]}>
-      <Text style={[styles.text, {color: colors.text}]}>{text}</Text>
+    <Pressable
+      onPress={isDisabled ? null : onPress}
+      style={[styles.container, {opacity}, style]}>
+      <Text style={[styles.text, {color: colors.text}, textStyle]}>{text}</Text>
     </Pressable>
   );
 }
