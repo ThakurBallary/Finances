@@ -2,6 +2,7 @@ export default {
   accountHolder: 'account holder',
   accountNumber: 'account number',
   add: 'add',
+  addTransaction: 'add transaction',
   all: 'all',
   amount: 'amount',
   balance: 'balance',

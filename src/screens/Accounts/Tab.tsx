@@ -1,6 +1,6 @@
 import React from 'react';
 import {Account} from 'features/accounts';
-// import {Transactions} from 'components';
+import {Transactions} from 'components';
 import {AccountCard} from 'components/cards';
 import {View} from 'react-native';
 import {useTheme} from '@react-navigation/native';
@@ -23,7 +23,7 @@ export default function AccountTab({route}: Props) {
     <View
       style={[styles.screenContainer, {backgroundColor: colors.background}]}>
       <AccountCard number={number} />
-      {/* <Transactions number={number} /> */}
+      <Transactions number={number} />
     </View>
   );
 }

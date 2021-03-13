@@ -2,6 +2,7 @@ export default {
   accountHolder: 'खाता धारक',
   accountNumber: 'खाता संख्या',
   add: 'जोड़ना',
+  addTransaction: 'लेन-देन जोड़ें',
   all: 'सब',
   amount: 'रकम',
   balance: 'संतुलन',

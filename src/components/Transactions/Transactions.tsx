@@ -1,20 +1,22 @@
 import React from 'react';
+import {FlatList} from 'react-native';
 import {useAppSelector} from 'hooks';
 import {Transaction, transactionSelector} from 'features/transactions';
-import {FlatList} from 'react-native-gesture-handler';
 import Item from './Item';
+import AddTransaction from './Add';
 
 type Props = {
   number: string;
 };
 
 export default function Transactions({number}: Props) {
-  const allActiveTransactions = useAppSelector(
-    transactionSelector.allActiveTransactions,
-  );
   const transactions = useAppSelector((state) =>
     transactionSelector.transactions(state, number),
   );
+
+  if (!number) {
+    return null;
+  }
 
   const keyExtractor = (item: Transaction) => item.id;
 
@@ -22,19 +24,15 @@ export default function Transactions({number}: Props) {
     return <Item {...item} />;
   }
 
-  let data: Transaction[] = [
-    {
-      accountNumber: number,
-      amount: 0,
-      date: '',
-      id: '',
-      isActive: true,
-      title: '',
-    },
-    ...(number === '0' ? allActiveTransactions : transactions),
-  ];
-
   return (
-    <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
+    <>
+      <AddTransaction accountNumber={number} />
+      <FlatList
+        data={transactions}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        keyboardShouldPersistTaps="handled"
+      />
+    </>
   );
 }
