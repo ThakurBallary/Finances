@@ -1,6 +1,6 @@
 # Finances
 
-###### Mobile app to manage your finances
+###### Mobile app to manage your finance
 
 
 #### Get Started
