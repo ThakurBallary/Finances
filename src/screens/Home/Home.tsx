@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <View style={styles.flexCenter}>
-      <Text style={{color: colors.text}}>Home Screen</Text>
+      <Text style={{color: colors.text}}>Home</Text>
     </View>
   );
 }
