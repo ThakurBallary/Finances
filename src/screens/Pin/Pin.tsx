@@ -9,7 +9,7 @@ export default function Pin() {
 
   return (
     <View style={styles.flexCenter}>
-      <Text style={{color: colors.text}}>Pin</Text>
+      <Text style={{color: colors.text}}>Pin Screen</Text>
     </View>
   );
 }
