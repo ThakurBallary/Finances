@@ -14,7 +14,7 @@ cd Finances
 #### Install packages
 
 ```
-yarn [install]
+yarn
 ```
 
 
