@@ -1,7 +1,7 @@
 # Finances
 
 ###### Mobile app to manage your finances 
-
+Todo
 #### Get Started
 
 ```
