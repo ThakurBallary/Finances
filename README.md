@@ -2,6 +2,8 @@
 
 ###### Mobile app to manage your finance
 
+In progress
+
 #### Get Started
 
 ```
